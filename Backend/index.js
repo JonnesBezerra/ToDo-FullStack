@@ -41,6 +41,12 @@ app.put("/task/:id", async (req, res) => {
   res.json(task);
 });
 
+app.delete("/task/:id", async (req, res) => {
+  const id = req.params.id;
+  const task = await Todo.findByIdAndDelete(id);
+  res.json(task);
+});
+
 app.listen(port, () => {
   console.log("App is running in PORT: ", port);
 });
