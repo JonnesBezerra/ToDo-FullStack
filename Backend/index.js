@@ -47,6 +47,18 @@ app.delete("/task/:id", async (req, res) => {
   res.json(task);
 });
 
-app.listen(port, () => {
-  console.log("App is running in PORT: ", port);
-});
+// Connection
+const connectDB = (url) => mongoose.connect(url);
+
+const start = async () => {
+  try {
+    await connectDB(connectionString);
+    app.listen(port, () => {
+      console.log("App is running in PORT: ", port);
+    });
+  } catch (error) {
+    console.log("Error when connecting: ", error);
+  }
+};
+
+start();
