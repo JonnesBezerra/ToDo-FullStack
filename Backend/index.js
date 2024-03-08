@@ -22,6 +22,12 @@ app.get("/tasks", async (re, res) => {
   res.json(tasks);
 });
 
+app.get("/task/:id", async (req, res) => {
+  const id = req.params.id;
+  const task = await Todo.findById(id);
+  res.json(task);
+});
+
 app.listen(port, () => {
   console.log("App is running in PORT: ", port);
 });
