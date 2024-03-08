@@ -2,7 +2,15 @@ const express = require("express");
 
 const app = express();
 
-const port = 3000;
+const TodoSchema = new mongoose.Schema({
+  description: String,
+  completed: Boolean,
+});
+
+const Todo = mongoose.model("Todo", TodoSchema);
+
+// Middlewares
+app.use(bodyParser.json());
 
 app.get("/", (req, res, next) => {
   res.send("ToDo Home page!");
