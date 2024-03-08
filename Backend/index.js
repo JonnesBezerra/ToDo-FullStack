@@ -1,4 +1,11 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+
+const port = process.env.PORT ? Number(process.env.PORT) : 3333;
+
+const connectionString = process.env.DATABASE_URL;
 
 const app = express();
 
