@@ -1,8 +1,11 @@
 import { Title } from "@/components";
-import { render } from "@testing-library/react";
+import Home from "@/app/page";
+import { render, screen } from "@testing-library/react";
 
 test("displays Title", () => {
-  render(<Title />);
+  render(<Home />);
 
-  ex
+  const title = screen.getByRole("title");
+
+  expect(title).toHaveBeenCalled();
 });
