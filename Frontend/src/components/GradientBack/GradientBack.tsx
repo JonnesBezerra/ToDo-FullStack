@@ -1,7 +1,15 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const GradientBack = () => {
-  return <div>GradientBack</div>;
+interface GradientBackProps {
+  children: ReactNode;
+}
+
+const GradientBack = ({ children }: GradientBackProps) => {
+  return (
+    <div className="bg-gradient-to-tr from-blue-600 via-purple-600 to-yellow-300">
+      {children}
+    </div>
+  );
 };
 
 export default GradientBack;
