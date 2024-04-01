@@ -1,43 +1,59 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import InputTask from './InputText';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import InputTask from "@/components/InputTask/InputTask";
+import "@testing-library/jest-dom";
 
-describe('InputText component', () => {
-  it('should render with the provided label and value', () => {
-    const label = 'Name';
-    const value = 'John Doe';
+describe("InputText component", () => {
+  it("should render", () => {
+    render(<InputTask />);
 
-    render(<InputTask label={label} value={value} />);
-
-    expect(screen.getByLabelText(label)).toBeInTheDocument();
-    expect(screen.getByLabelText(label)).toHaveValue(value);
+    expect(screen.getByTestId("InputTask")).toBeInTheDocument();
+    expect(screen.getByText("+ Add")).toBeInTheDocument();
   });
 
-  it('should update the value on user input', () => {
-    const label = 'Email';
-    const newValue = 'test@example.com';
+  it("should update the input value on user input", async () => {
+    render(<InputTask />);
 
-    render(<InputTask label={label} />);
+    const input = screen.getByTestId("InputTask");
+    const newValue = "New task";
 
-    const input = screen.getByLabelText(label);
-    userEvent.type(input, newValue);
+    await userEvent.type(input, newValue);
 
     expect(input).toHaveValue(newValue);
   });
 
-  it('should call the onChange handler on value change', () => {
-    const label = 'Message';
-    const mockOnChange = jest.fn();
+  it("should call the handleSubmit function on form submission", async () => {
+    const mockHandleSubmit = jest.fn();
 
-    render(<InputTask label={label} onChange={mockOnChange} />);
+    render(<InputTask />);
 
-    const input = screen.getByLabelText(label);
-    const newValue = 'Hello world!';
+    const form = screen.getByRole("form");
+    form.onsubmit = mockHandleSubmit;
 
-    userEvent.type(input, newValue);
+    const input = screen.getByTestId("InputTask");
+    const newValue = "Test task";
 
-    expect(mockOnChange).toHaveBeenCalledTimes(1);
-    expect(mockOnChange).toHaveBeenCalledWith(expect.any(Object)); // Match event object
+    const addButton = screen.getByText("+ Add");
+
+    await userEvent.type(input, newValue);
+    await userEvent.click(addButton);
+
+    expect(mockHandleSubmit).toHaveBeenCalledTimes(1);
+    expect(mockHandleSubmit).toHaveBeenCalledWith(expect.any(Object));
+  });
+
+  it("should clear the input value after submission", async () => {
+    render(<InputTask />);
+
+    const input = screen.getByTestId("InputTask");
+    const newValue = "Task to clear";
+
+    const addButton = screen.getByText("+ Add");
+
+    await userEvent.type(input, newValue);
+    await userEvent.click(addButton);
+
+    expect(input).toHaveValue("");
   });
 });
