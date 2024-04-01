@@ -1,4 +1,5 @@
 "use client";
+import { PlusIcon } from "@heroicons/react/16/solid";
 import React, { FormEvent, useState } from "react";
 
 const InputTask = () => {
@@ -29,8 +30,11 @@ const InputTask = () => {
         placeholder="What do you need to do?"
         className="grow p-3 px-5 rounded-s-lg bg-white bg-opacity-40 border-2 border-transparent text-gray-800 text-base font-medium placeholder-gray-600 focus-visible:outline-none focus:border-2 focus:border-slate-800 focus:rounded-s-lg"
       />
-      <button type="submit" className="bg-gray-800 px-4 py-2 rounded-e-lg">
-        + Add
+      <button
+        type="submit"
+        className="bg-gray-800 flex items-center justify-evenly w-28 px-4 py-2 rounded-e-lg"
+      >
+        <PlusIcon className="h-6 w-6 text-white" /> Add
       </button>
     </form>
   );
