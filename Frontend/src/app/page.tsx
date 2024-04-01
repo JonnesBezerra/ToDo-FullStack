@@ -1,6 +1,4 @@
-import { Title } from "@/components";
-import GradientBack from "@/components/GradientBack/GradientBack";
-import InputTask from "@/components/InputTask/InputTask";
+import { GradientBack, InputTask, Title } from "@/components";
 
 export default function Home() {
   return (
