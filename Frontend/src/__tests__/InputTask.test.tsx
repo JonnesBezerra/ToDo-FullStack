@@ -9,7 +9,7 @@ describe("InputText component", () => {
     render(<InputTask />);
 
     expect(screen.getByTestId("InputTask")).toBeInTheDocument();
-    expect(screen.getByText("+ Add")).toBeInTheDocument();
+    expect(screen.getByText("Add")).toBeInTheDocument();
   });
 
   it("should update the input value on user input", async () => {
@@ -34,7 +34,7 @@ describe("InputText component", () => {
     const input = screen.getByTestId("InputTask");
     const newValue = "Test task";
 
-    const addButton = screen.getByText("+ Add");
+    const addButton = screen.getByText("Add");
 
     await userEvent.type(input, newValue);
     await userEvent.click(addButton);
@@ -49,7 +49,7 @@ describe("InputText component", () => {
     const input = screen.getByTestId("InputTask");
     const newValue = "Task to clear";
 
-    const addButton = screen.getByText("+ Add");
+    const addButton = screen.getByText("Add");
 
     await userEvent.type(input, newValue);
     await userEvent.click(addButton);
