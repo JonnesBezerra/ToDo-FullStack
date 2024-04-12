@@ -24,7 +24,7 @@ app.get("/", (req, res, next) => {
   res.send("ToDo Home page!");
 });
 
-app.get("/tasks", async (re, res) => {
+app.get("/tasks", async (req, res) => {
   const tasks = await Todo.find({});
   res.json(tasks);
 });
