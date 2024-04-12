@@ -1,7 +1,6 @@
 "use server";
 
 export const getTasks = async () => {
-  console.log(process.env.API);
   try {
     const response = await fetch(`${process.env.API}/tasks`, {
       method: "GET",
@@ -9,6 +8,7 @@ export const getTasks = async () => {
 
     if (response) {
       const data = await response.json();
+      console.log("GET Tasks SUCCESS");
       return data;
     }
   } catch (error) {
