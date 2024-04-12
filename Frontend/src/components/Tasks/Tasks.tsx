@@ -1,37 +1,35 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Task } from "..";
+import { getTasks } from "@/server";
 
-const todo = [
-  {
-    _id: "65ea7111922a2b5ccd89c7ac",
-    description: "Write MongoDB code",
-    completed: false,
-    __v: 0,
-  },
-  {
-    _id: "65ea7121922a2b5ccd89c7af",
-    description: "Write JavaScript code",
-    completed: false,
-    __v: 0,
-  },
-  {
-    _id: "65ea712d922a2b5ccd89c7b1",
-    description: "Write Python code",
-    completed: false,
-    __v: 0,
-  },
-];
+interface TaskItem {
+  _id: string;
+  description: string;
+  completed: boolean;
+}
 
 const Tasks = () => {
+  const [tasks, setTasks] = useState<TaskItem[]>([]);
+
+  useEffect(() => {
+    getTasks().then((data) => {
+      setTasks(data);
+    });
+  }, []);
+
   return (
     <section className="flex flex-1 flex-col w-full my-4">
-      <h2 className="font-bold text-slate-900 text-2xl mt-5">Tasks</h2>
+      <h2 className="font-bold text-slate-900 text-2xl mt-5" role="heading">
+        Tasks
+      </h2>
       <ul className="flex flex-col gap-2 mt-5">
-        {todo.map((item) => (
+        {tasks.map((item) => (
           <Task
             _id={item._id}
             description={item.description}
             completed={item.completed}
+            setTasks={setTasks}
             key={item._id}
           />
         ))}

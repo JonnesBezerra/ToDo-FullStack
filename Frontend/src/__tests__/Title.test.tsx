@@ -1,10 +1,10 @@
-import Home from "@/app/page";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { Title } from "@/components";
 
 describe("Title component", () => {
   it("displays Title", () => {
-    render(<Home />);
+    render(<Title />);
 
     const title = screen.getByRole("title");
 
