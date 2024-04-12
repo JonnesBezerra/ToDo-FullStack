@@ -5,7 +5,12 @@ import "@testing-library/jest-dom";
 
 describe("Task component", () => {
   it("renders the task description and completion icon", () => {
-    const taskData = { _id: "1", description: "Write tests", completed: true };
+    const taskData = {
+      _id: "1",
+      description: "Write tests",
+      completed: true,
+      setTasks: () => {},
+    };
     render(<Task {...taskData} />);
 
     const taskItem = screen.getByText(taskData.description, { exact: false });
@@ -20,6 +25,7 @@ describe("Task component", () => {
       _id: "2",
       description: "Completed task",
       completed: true,
+      setTasks: () => {},
     };
     render(<Task {...completedTask} />);
 
