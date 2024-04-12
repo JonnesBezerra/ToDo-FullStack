@@ -11,7 +11,7 @@ describe("Task component", () => {
     const taskItem = screen.getByText(taskData.description, { exact: false });
     expect(taskItem).toBeInTheDocument();
 
-    const checkIcon = screen.getByTestId("check-outline");
+    const checkIcon = screen.getByTestId("check-solid");
     expect(checkIcon).toBeInTheDocument();
   });
 
@@ -24,6 +24,6 @@ describe("Task component", () => {
     render(<Task {...completedTask} />);
 
     const completedTaskText = screen.getByText(completedTask.description);
-    expect(completedTaskText).toHaveStyle("text-decoration-line: line-through");
+    expect(completedTaskText).toHaveClass("line-through");
   });
 });
