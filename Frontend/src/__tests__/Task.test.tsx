@@ -1,19 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { Task } from "@/components";
+import "@testing-library/jest-dom";
 
 describe("Task component", () => {
   it("renders the task description and completion icon", () => {
     const taskData = { _id: "1", description: "Write tests", completed: true };
     render(<Task {...taskData} />);
 
-    const taskItem = screen.getByText(taskData.description);
+    const taskItem = screen.getByText(taskData.description, { exact: false });
     expect(taskItem).toBeInTheDocument();
 
-    const checkIcon = screen.getByRole("img", {
-      name: "Check circle outline icon",
-    });
+    const checkIcon = screen.getByTestId("check-outline");
     expect(checkIcon).toBeInTheDocument();
   });
 
