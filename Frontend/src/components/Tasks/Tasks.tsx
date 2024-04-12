@@ -21,7 +21,7 @@ const Tasks = () => {
   return (
     <section className="flex flex-1 flex-col w-full my-4">
       <h2 className="font-bold text-slate-900 text-2xl mt-5" role="heading">
-      Tasks
+        Tasks
       </h2>
       <ul className="flex flex-col gap-2 mt-5">
         {tasks.map((item) => (
@@ -29,6 +29,7 @@ const Tasks = () => {
             _id={item._id}
             description={item.description}
             completed={item.completed}
+            setTasks={setTasks}
             key={item._id}
           />
         ))}
