@@ -17,7 +17,15 @@ const Task = ({ _id, description, completed }: Props) => {
         className="text-slate-900 h-6"
         data-testid="check-outline"
       />
+        )}
+        <p
+          className={`text-slate-900 ${
+            completed ? "line-through" : "no-underline"
+          }`}
+        >
       {description}
+        </p>
+      </div>
     </li>
   );
 };
