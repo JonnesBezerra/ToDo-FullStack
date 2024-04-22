@@ -1,3 +1,4 @@
+"use client";
 import React, { FormEvent, useState } from "react";
 import { updateDescriptionTask } from "@/server";
 import { CheckIcon } from "@heroicons/react/24/solid";
@@ -8,7 +9,7 @@ interface EditTaskProps {
   handleEdit: Function;
 }
 
-const EditTaskFrom = ({ _id, description, handleEdit }: EditTaskProps) => {
+const EditTaskForm = ({ _id, description, handleEdit }: EditTaskProps) => {
   const [taskText, setTaskText] = useState(description);
 
   const handleChange = ({ target }: any) => {
@@ -50,4 +51,4 @@ const EditTaskFrom = ({ _id, description, handleEdit }: EditTaskProps) => {
   );
 };
 
-export default EditTaskFrom;
+export default EditTaskForm;

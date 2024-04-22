@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { getTasks, updateStatusTask } from "@/server";
+import { EditTaskForm, LoadingTask } from "../";
 import {
   CheckCircleIcon as CheckOutline,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import { CheckCircleIcon as CheckSolid } from "@heroicons/react/24/solid";
-import LoadingTask from "../LoadingTask/LoadingTask";
-import { PencilIcon } from "@heroicons/react/24/solid";
-import EditTaskFrom from "../EditTaskFrom/EditTaskFrom";
+import {
+  CheckCircleIcon as CheckSolid,
+  PencilIcon,
+} from "@heroicons/react/24/solid";
 
 interface TaskProps {
   _id: string;
@@ -48,7 +49,7 @@ const Task = ({ _id, description, completed, setTasks }: TaskProps) => {
             completed ? "bg-opacity-30" : "bg-opacity-50"
           }`}
         >
-          <EditTaskFrom
+          <EditTaskForm
             _id={_id}
             description={description}
             handleEdit={handleEdit}
