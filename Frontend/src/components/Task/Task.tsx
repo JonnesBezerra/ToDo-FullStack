@@ -86,12 +86,15 @@ const Task = ({ _id, description, completed, setTasks }: TaskProps) => {
           <div>
             <button
               type="button"
-              className="w-10"
+              className="w-8 h-6 rounded-lg hover:bg-gray-500 hover:bg-opacity-[0.125]"
               onClick={() => setEditTask((prev) => !prev)}
             >
               <PencilIcon className="text-slate-900 h-4 m-auto" />
             </button>
-            <button type="button" className="w-10">
+            <button
+              type="button"
+              className="w-9 h-6 rounded-lg hover:bg-gray-500 hover:bg-opacity-[0.125]"
+            >
               <TrashIcon className="text-red-800 h-5 m-auto" />
             </button>
           </div>
