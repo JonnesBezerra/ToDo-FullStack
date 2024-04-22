@@ -1,4 +1,5 @@
 import { getTasks } from "./GetTasks";
-import { updateStatusTask } from "./UpdateTask";
+import { updateStatusTask, updateDescriptionTask } from "./UpdateTask";
+import { newTask } from "./NewTask";
 
-export { getTasks, updateStatusTask };
+export { getTasks, updateStatusTask, updateDescriptionTask, newTask };
