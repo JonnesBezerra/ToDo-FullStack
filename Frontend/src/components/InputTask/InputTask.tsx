@@ -1,6 +1,7 @@
 "use client";
+import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/16/solid";
-import React, { FormEvent, useState } from "react";
+import { newTask } from "@/server";
 
 const InputTask = () => {
   const [task, setTask] = useState("");
@@ -9,16 +10,24 @@ const InputTask = () => {
     setTask(target.value);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     if (task && task.trim()) {
-      console.log("submit: ", task);
+      const data = {
+        description: task,
+        completed: false,
+      };
+      await newTask(data);
       setTask("");
     }
   };
 
   return (
-    <form role="form" onSubmit={handleSubmit} className="flex w-full">
+    <form
+      method="POST"
+      role="form"
+      onSubmit={handleSubmit}
+      className="flex w-full"
+    >
       <input
         type="text"
         name="InputTask"
