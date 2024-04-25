@@ -32,9 +32,10 @@ const Task = ({ _id, description, completed, setTasks }: TaskProps) => {
     });
   };
 
-  const handleEdit = (taskText: string) => {
+  const handleEdit = async (taskText: string) => {
     setTaskDescription(taskText);
     setEditTask((prev) => !prev);
+    await getTasks().then((data) => setTasks(data));
   };
 
   if (loading) {
