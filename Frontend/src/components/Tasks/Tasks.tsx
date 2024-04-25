@@ -11,10 +11,13 @@ interface TaskItem {
 
 const Tasks = () => {
   const [tasks, setTasks] = useState<TaskItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTasks().then((data) => {
       setTasks(data);
+      setLoading(false);
     });
   }, []);
 
@@ -23,17 +26,25 @@ const Tasks = () => {
       <h2 className="font-bold text-slate-900 text-2xl mt-5" role="heading">
         Tasks
       </h2>
-      <ul className="flex flex-col gap-2 mt-5">
-        {tasks.map((item) => (
-          <Task
-            _id={item._id}
-            description={item.description}
-            completed={item.completed}
-            setTasks={setTasks}
-            key={item._id}
-          />
-        ))}
-      </ul>
+      {loading ? (
+        <p className="mt-5 text-gray-700">Loading tasks...</p>
+      ) : (
+        <ul className="flex flex-col gap-2 mt-5">
+          {tasks.length ? (
+            tasks.map((item) => (
+              <Task
+                _id={item._id}
+                description={item.description}
+                completed={item.completed}
+                setTasks={setTasks}
+                key={item._id}
+              />
+            ))
+          ) : (
+            <p className="mx-auto text-gray-700">No tasks yet.</p>
+          )}
+        </ul>
+      )}
     </section>
   );
 };
