@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { getTasks, updateStatusTask } from "@/server";
+import { deleteTask, getTasks, updateStatusTask } from "@/server";
 import { EditTaskForm, LoadingTask } from "../";
 import {
   CheckCircleIcon as CheckOutline,
@@ -32,9 +32,19 @@ const Task = ({ _id, description, completed, setTasks }: TaskProps) => {
     });
   };
 
-  const handleEdit = (taskText: string) => {
+  const handleEdit = async (taskText: string) => {
     setTaskDescription(taskText);
     setEditTask((prev) => !prev);
+    await getTasks().then((data) => setTasks(data));
+  };
+
+  const handleDelete = async () => {
+    setLoading(true);
+    await deleteTask({ id: _id });
+    await getTasks().then((data) => {
+      setTasks(data);
+      setLoading(false);
+    });
   };
 
   if (loading) {
@@ -95,6 +105,7 @@ const Task = ({ _id, description, completed, setTasks }: TaskProps) => {
             <button
               type="button"
               className="w-9 h-6 rounded-lg hover:bg-gray-500 hover:bg-opacity-[0.125]"
+              onClick={handleDelete}
             >
               <TrashIcon className="text-red-800 h-5 m-auto" />
             </button>
