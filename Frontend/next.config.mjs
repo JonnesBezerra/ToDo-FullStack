@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  output: "export",
+  reactStrictMode: true,
+  basePath: "/ToDoApp-FullStack/Frontend",
+};
 
 export default nextConfig;
