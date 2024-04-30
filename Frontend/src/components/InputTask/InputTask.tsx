@@ -22,12 +22,7 @@ const InputTask = () => {
   };
 
   return (
-    <form
-      method="POST"
-      // role="form"
-      // onSubmit={handleSubmit}
-      className="flex w-full"
-    >
+    <form method="POST" role="form" className="flex w-full">
       <input
         type="text"
         name="InputTask"
@@ -40,7 +35,6 @@ const InputTask = () => {
         className="grow p-3 px-5 rounded-s-lg bg-white bg-opacity-40 border-2 border-transparent text-gray-800 text-base font-medium placeholder-gray-600 focus-visible:outline-none focus:border-2 focus:border-slate-800 focus:rounded-s-lg"
       />
       <button
-        // type="button"
         onClick={handleSubmit}
         className="bg-gray-800 flex items-center justify-evenly w-28 px-4 py-2 rounded-e-lg"
       >
