@@ -1,7 +1,7 @@
 {
   "name": "todoapp-fullstack",
   "version": "0.1.0",
-  "homepage": "http://JonnesBezerra.github.io/ToDoApp-FullStack/Frontend",
+  "homepage": "./",
   "private": true,
   "scripts": {
     "dev": "next dev",
