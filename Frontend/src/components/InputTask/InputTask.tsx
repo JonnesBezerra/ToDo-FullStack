@@ -23,6 +23,7 @@ const InputTask = () => {
 
   return (
     <form
+      method="POST"
       role="form"
       onSubmit={handleSubmit}
       className="flex w-full"
