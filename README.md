@@ -6,7 +6,7 @@ This project implements a comprehensive ToDo application with features to create
 
 ## The application is live at:
 
-<a href="https://todoapp-fullstack-topaz.vercel.app" target="_blank">ToDoApp-FullStack</a>
+<a href="https://todoapp-fullstack-topaz.vercel.app" target="_blank">ToDoApp FullStack</a>
 
 > **Possible slowness and/or unavailability may occur due to Render, Vercel servers and the Mongo Atlas cloud.**
 
